@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emoji do dedo do meio</title>
+  
+  <link rel="stylesheet" href="css/dedo.css">
+</head>
+<body>
+
+  <div class="title">Como eu sair qualquer dia desses?</div>
+
+  <div class="image-container">
+    <img src="https://www.pngmart.com/files/22/Emoji-Meme-PNG-Clipart.png" alt="Emoji dedo do meio" />
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn-sim" id="btnSim">Sim</button>
+  </div>
+
+  <button class="btn-nao" id="btnNao">Não</button>
+
+  <div id="mensagem">
+    <p>que bom que você aceitou, manda print no zap zap</p>
+    <img src="https://i.pinimg.com/originals/34/8f/37/348f370de377080493da35e29315ccad.jpg" alt="Emojis apertando mão" />
+  </div>
+
+  <script>
+    const btnNao = document.getElementById('btnNao');
+    const btnSim = document.getElementById('btnSim');
+    const mensagem = document.getElementById('mensagem');
+
+    btnSim.addEventListener('click', () => {
+      btnSim.style.display = 'none';
+      mensagem.style.display = 'block';
+    });
+
+    function getRandomPosition(button) {
+      const btnWidth = button.offsetWidth;
+      const btnHeight = button.offsetHeight;
+      const padding = 10;
+
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      const randomX = Math.floor(Math.random() * (windowWidth - btnWidth - padding * 2)) + padding;
+      const randomY = Math.floor(Math.random() * (windowHeight - btnHeight - padding * 2)) + padding;
+
+      return { x: randomX, y: randomY };
+    }
+
+    btnNao.addEventListener('mouseenter', () => {
+      const { x, y } = getRandomPosition(btnNao);
+      btnNao.style.transition = 'top 0.3s ease, left 0.3s ease';
+      btnNao.style.left = x + 'px';
+      btnNao.style.top = y + 'px';
+    });
+  </script>
+</body>
+</html>
